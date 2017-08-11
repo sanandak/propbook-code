@@ -114,12 +114,14 @@ The other common setting is a 5MHz crystal (for example, the quickstart board). 
 The directories refer to the chapters of the book.  The `libs` directory
 has needed libraries (serial port, number formatting, and unit-testing).
 
-The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`.
+The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`:
 
 ```
-> cd ch3
-> openspin hello_Demo.spin # compile the spin code to binary
-> propeller-load -L ../libs -b psu -t -r filename.binary # download binary file to board, and run the program, and open a terminal 
+> cd propbook-code/ch3
+# compile the spin code to binary
+> openspin hello_Demo.spin 
+# download binary file to board, and run the program, and open a terminal 
+> propeller-load -L ../libs -b psu -t -r hello_Demo.binary 
 ```
 
 Be warned, if you use the wrong board specification file (for example a board spec that expects an 80MHz clock) with a board that actually has a, e.g., 100MHz
