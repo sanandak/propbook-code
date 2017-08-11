@@ -107,5 +107,8 @@ results in an 100 MHz clock (6.25 x 16).
 It specifies that the serial port is on pins 30 and 31 at a speed of
 115200 baud.
 
-**Make sure you check and edit these settings for your board**
-**Both the spin file and the .cfg file must match the board**
+The other common setting is a 5MHz crystal (for example, the quickstart board).  In that case, set `_XINFREQ = 5_000_000` and use `-b quickstart` in the `propeller-load` command.
+
+**Make sure you check and edit these settings for your board.**
+
+**Both the spin file and the .cfg file must match the board.**
