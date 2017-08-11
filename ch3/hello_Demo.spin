@@ -3,7 +3,7 @@
 
 CON ' Clock mode settings
   _CLKMODE = XTAL1 + PLL16X
-  _XINFREQ = 5_000_000
+  _XINFREQ = 6_250_000
 
   FULL_SPEED  = ((_clkmode - xtal1) >> 6) * _xinfreq  ' system freq as a constant
   ONE_MS      = FULL_SPEED / 1_000                    ' ticks in 1ms

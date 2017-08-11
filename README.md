@@ -3,7 +3,8 @@
 Purchase the book at [Leanpub Propeller Book](https://leanpub.com/propellerassemblerpasmintroduction).
 
 Download the SimpleIDE app from http://learn.parallax.com.
-On a mac, this will install the executables in 
+On a mac, this will install the executables (`openspin` and `propeller-load`, wich are the only two you will need) 
+in 
 `/Applications/SimpleIDE.app/Contents/propeller-gcc/bin`, which should be added
 to your path
 
@@ -44,9 +45,11 @@ so that the new board appears as an option in SimpleIDE.
 > vi boards.txt
 ```
 
+
+The quickstart config.
 ```
-# psu.cfg0
-    clkfreq: 100000000
+# quickstart.cfg
+    clkfreq: 80000000
     clkmode: XTAL1+PLL16X
     baudrate: 115200
     rxpin: 31
@@ -59,25 +62,18 @@ so that the new board appears as an option in SimpleIDE.
     eeprom-first: TRUE
 ```
 
-## Compiling and downloading code
-
-The directories refer to the chapters of the book.  The `libs` directory
-has needed libraries (serial port, number formatting, and unit-testing).
-
-The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`.
-
+And the psu config (same as the quickstart, but with a 6.25MHz crystal, for
+a 100MHz clock)
 ```
-> cd ch3
-> openspin hello_Demo.spin # compile the spin code to binary
-> propeller-load -L ../libs -b psu -t -r filename.binary # download binary file to board, and run the program, and open a terminal 
+# psu.cfg
+    clkfreq: 100000000
+    clkmode: XTAL1+PLL16X
+    baudrate: 115200
+    rxpin: 31
+    txpin: 30
 ```
 
-Be warned, if you use the wrong board specification file (for example a board spec that expects an 80MHz clock) with a board that actually has a, e.g., 100MHz
-clock, you will get gibberish on the screen.
 
-In addition, the baud rate of the terminal has to match the baud rate
-in the code.  Generally we use 115200, but if there is a mismatch,
-again, you will get gibberish.
 
 ## Clock and serial port.
 
@@ -112,3 +108,23 @@ The other common setting is a 5MHz crystal (for example, the quickstart board). 
 **Make sure you check and edit these settings for your board.**
 
 **Both the spin file and the .cfg file must match the board.**
+
+## Compiling and downloading code
+
+The directories refer to the chapters of the book.  The `libs` directory
+has needed libraries (serial port, number formatting, and unit-testing).
+
+The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`.
+
+```
+> cd ch3
+> openspin hello_Demo.spin # compile the spin code to binary
+> propeller-load -L ../libs -b psu -t -r filename.binary # download binary file to board, and run the program, and open a terminal 
+```
+
+Be warned, if you use the wrong board specification file (for example a board spec that expects an 80MHz clock) with a board that actually has a, e.g., 100MHz
+clock, you will get gibberish on the screen.
+
+In addition, the baud rate of the terminal has to match the baud rate
+in the code.  Generally we use 115200, but if there is a mismatch,
+again, you will get gibberish.
