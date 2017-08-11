@@ -2,6 +2,14 @@
 
 Purchase the book at [Leanpub Propeller Book](https://leanpub.com/propellerassemblerpasmintroduction).
 
+## Compiling and Running Spin
+
+There are two ways to compile and run the code.  In the book I only use 
+command line programs (~openspin~ and ~propeller-load~).  The other way is to use PropTool.exe (on Windows) or PropellerIDE (on all platforms).  However, there is a bug in the Mac version of PropellerIDE that prevents it from running
+the code.
+
+### Command line methods
+
 Download the SimpleIDE app from http://learn.parallax.com.
 On a mac, this will install the executables (`openspin` and `propeller-load`, wich are the only two you will need) 
 in 
