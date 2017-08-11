@@ -1,9 +1,58 @@
-# propbook-code
-Code for propeller pasm tutorial book.
+# Code for propeller pasm tutorial book.
 
-The steim_spin directory has the templates for spin and pasm and the hello, world examples.  In addition, the full spin compression code is in steim_spin/steim_spin_Demo and steim_spin/steim_spin.
+Purchase the book at [Leanpub Propeller Book](https://leanpub.com/propellerassemblerpasmintroduction).
 
-The PASM version of the compression is in steim_pasm.
-steim_pasm0 - only handles sample 0
-steim_pasm1 - full compressor (no decompression)
-steim_pasm2 - both compressor and decompressor.
+Download the SimpleIDE app from http://learn.parallax.com.
+On a mac, this will install the executables in 
+`/Applications/SimpleIDE.app/Contents/propeller-gcc/bin`, which should be added
+to your path
+
+```
+export PROPDIR=/Applications/SimpleIDE.app/Contents/propeller-gcc/
+export PATH=$PROPDIR/bin:$PATH
+```
+
+## Board configurations
+If your board is not present in `$PROPDIR/propeller-load`, then copy one of the
+other ones (for example `quickstart.cfg`) and edit it for your board.  The board we use here has a clock speed of 100MHz, but is otherwise the same as
+the quickstart board.
+
+Copy it to a new file and edit it.  In addition, edit the `boards.txt` file 
+so that the new board appears as an option in SimpleIDE.
+```
+> cd $PROPDIR/propeller-load
+> sudo cp quickstart.cfg psu.cfg
+> vi psu.cfg
+> vi boards.txt
+```
+
+```
+# psu.cfg0
+    clkfreq: 100000000
+    clkmode: XTAL1+PLL16X
+    baudrate: 115200
+    rxpin: 31
+    txpin: 30
+    tvpin: 12   # only used if TV_DEBUG is defined
+    cache-driver: eeprom_cache.dat
+    cache-size: 8K
+    cache-param1: 0
+    cache-param2: 0
+    eeprom-first: TRUE
+```
+
+## Compiling and downloading code
+
+The directories refer to the chapters of the book.  The `libs` directory
+has needed libraries (serial port, number formatting, and unit-testing).
+
+The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`.
+
+```
+> cd ch3
+> openspin hello_Demo.spin # compile the spin code to binary
+> propeller-load -L ../libs -b psu -t -r filename.binary # download binary file to board, and run the program, and open a terminal 
+```
+
+
+
