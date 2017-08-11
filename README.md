@@ -12,6 +12,24 @@ export PROPDIR=/Applications/SimpleIDE.app/Contents/propeller-gcc/
 export PATH=$PROPDIR/bin:$PATH
 ```
 
+## Getting this code
+You can either download the code as a zip file (see the green button above labeled "Clone or Download") or you can use git as it is intended: a source code management tool (SCM).
+
+In order to use it as an SCM, you will need to install the `git` program or a GUI client (see http://desktop.github.com for one such).
+
+Clone the repository (as this set of files is called):
+```
+git clone https://github.com/sanandak/propbook-code.git
+```
+This will create a directory `propbook-code` that is identical to this one.
+
+At any later time, as I make changes to the repository, you can update
+your copy:
+```
+git pull origin master
+```
+
+
 ## Board configurations
 If your board is not present in `$PROPDIR/propeller-load`, then copy one of the
 other ones (for example `quickstart.cfg`) and edit it for your board.  The board we use here has a clock speed of 100MHz, but is otherwise the same as
