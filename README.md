@@ -72,5 +72,40 @@ The board configuration refers to a file in `$PROPDIR/propeller-load`, in this c
 > propeller-load -L ../libs -b psu -t -r filename.binary # download binary file to board, and run the program, and open a terminal 
 ```
 
+Be warned, if you use the wrong board specification file (for example a board spec that expects an 80MHz clock) with a board that actually has a, e.g., 100MHz
+clock, you will get gibberish on the screen.
 
+In addition, the baud rate of the terminal has to match the baud rate
+in the code.  Generally we use 115200, but if there is a mismatch,
+again, you will get gibberish.
 
+## Clock and serial port.
+
+Here is the template in `spin_template.spin`:
+
+```
+CON ' Clock mode settings
+  _CLKMODE = XTAL1 + PLL16X
+  _XINFREQ = 6_250_000
+
+  FULL_SPEED  = ((_clkmode - xtal1) >> 6) * _xinfreq  ' system freq as a constant
+  ONE_MS      = FULL_SPEED / 1_000                    ' ticks in 1ms
+  ONE_US      = FULL_SPEED / 1_000_00                 ' ticks in 1us
+
+CON ' Pin map
+
+  DEBUG_TX_TO   = 30
+  DEBUG_RX_FROM = 31
+
+CON ' UART ports
+  DEBUG             =      0
+  DEBUG_BAUD        = 115200
+```
+
+It expects a 6.25MHz crystal, with a 16x PLL (Phase Locked Loop) that
+results in an 100 MHz clock (6.25 x 16).
+It specifies that the serial port is on pins 30 and 31 at a speed of
+115200 baud.
+
+**Make sure you check and edit these settings for your board**
+**Both the spin file and the .cfg file must match the board**
