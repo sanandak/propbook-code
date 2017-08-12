@@ -10,11 +10,10 @@ the code.
 
 ### Command line methods
 
-Download the SimpleIDE app from http://learn.parallax.com.
-On a mac, this will install the executables (`openspin` and `propeller-load`, wich are the only two you will need) 
-in 
-`/Applications/SimpleIDE.app/Contents/propeller-gcc/bin`, which should be added
-to your path
+Download the SimpleIDE app from http://learn.parallax.com.  On a mac,
+this will install the executables in
+`/Applications/SimpleIDE.app/Contents/propeller-gcc/bin`, which should
+be added to your path
 
 ```
 export PROPDIR=/Applications/SimpleIDE.app/Contents/propeller-gcc/
@@ -125,11 +124,13 @@ has needed libraries (serial port, number formatting, and unit-testing).
 The board configuration refers to a file in `$PROPDIR/propeller-load`, in this case `psu.cfg`:
 
 ```
-> cd propbook-code/ch3
+> cd propbook-code/ch03
+
 # compile the spin code to binary
-> openspin hello_Demo.spin 
+> openspin -L ../libs hello_Demo.spin 
+
 # download binary file to board, and run the program, and open a terminal 
-> propeller-load -L ../libs -b psu -t -r hello_Demo.binary 
+> propeller-load  -b psu -t -r hello_Demo.binary 
 ```
 
 Be warned, if you use the wrong board specification file (for example a board spec that expects an 80MHz clock) with a board that actually has a, e.g., 100MHz
