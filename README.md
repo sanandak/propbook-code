@@ -5,7 +5,7 @@ Purchase the book at [Leanpub Propeller Book](https://leanpub.com/propellerassem
 ## Compiling and Running Spin
 
 There are two ways to compile and run the code.  In the book I only use 
-command line programs (~openspin~ and ~propeller-load~).  The other way is to use PropTool.exe (on Windows) or PropellerIDE (on all platforms).  However, there is a bug in the Mac version of PropellerIDE that prevents it from running
+command line programs (`openspin` and `propeller-load`).  The other way is to use PropTool.exe (on Windows) or PropellerIDE (on all platforms).  However, there is a bug in the Mac version of PropellerIDE that prevents it from running
 the code.
 
 ### Command line methods
