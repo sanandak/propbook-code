@@ -20,6 +20,12 @@ export PROPDIR=/Applications/SimpleIDE.app/Contents/propeller-gcc/
 export PATH=$PROPDIR/bin:$PATH
 ```
 
+## Compiling and running C code
+
+SimpleIDE is the best way to do this.  This is particularly true when you are
+linking `.cogc` files or `PASM` files to a main C program.  If you download
+this repo you must point your SimpleIDE install (including library files) to this directory.
+
 ## Getting this code
 You can either download the code as a zip file (see the green button above labeled "Clone or Download") or you can use git as it is intended: a source code management tool (SCM).
 
@@ -128,6 +134,16 @@ The board configuration refers to a file in `$PROPDIR/propeller-load`, in this c
 
 # compile the spin code to binary
 > openspin -L ../libs hello_Demo.spin 
+
+An open-source compiler for Propeller Spin
+Copyright © 2012-2015 Parallax, Inc.
+
+Compiling hello_Demo.spin
+|-FullDuplexSerial4portPlus_0v3.spin
+|-Numbers.spin
+|-hello_pasm.spin
+Done.
+Program size is 4040 bytes
 
 # download binary file to board, and run the program, and open a terminal 
 > propeller-load  -b psu -t -r hello_Demo.binary 
